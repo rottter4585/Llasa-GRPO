@@ -1,0 +1,16 @@
+torch 
+transformers 
+wandb
+datasets
+accelerate
+torchaudio
+bitsandbytes
+trl
+torchtune
+torchao
+vector-quantize-pytorch
+torchcodec
+evaluate
+jiwer
+soundfile
+librosa
