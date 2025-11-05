@@ -71,6 +71,17 @@ Optional fields produced by `create_dataset.py` (not required for GRPO, but usef
 
 To build/publish that dataset yourself, see `create_dataset.py` (encodes audio with XCodec2 and pushes to the Hub).
 
+You can use it like this: 
+
+```bash
+python /home/steven_huggingface_co/GRPO_Llasa/create_dataset.py \
+  --dataset-id MrDragonFox/Elise \
+  --split train \
+  --push-id Steveeeeeeen/Elise-xcodec2 \
+  --codec-id HKUSTAudio/xcodec2 \
+  --sampling-rate 16000
+```
+
 ## Training
 
 Run the GRPO trainer:
